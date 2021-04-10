@@ -19,6 +19,22 @@ function App() {
       .catch(error => console.log(error))
   }, [])
 
+  const addTask = (taskName, dueDate, description) => {
+    const newTask = {
+      taskId: "",
+      userId: userId,
+      taskName: taskName,
+      dueDate: dueDate,
+      complete: 0,
+      description: description
+    }
+    axios.post(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/createTask`, newTask)
+      .then(() => axios.get(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/${userId}`)
+                    .then((response) => setTasks(response.data))
+      .catch((error) =>console.log(error))
+      )
+  }
+
   const deleteTask = (taskId) => {
     axios.delete(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/deleteTask/${taskId}`)
       .then(() => axios.get(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/${userId}`)
@@ -28,15 +44,16 @@ function App() {
   }
 
   const completeTask = (taskId) => {
-    
+
   }
+
   return (
     <div className="App">
       <Container className='app-container'>
         <Row>
           <Col xs={12} md={3}>
               <div className='componemt-container'>
-                <AddTask />
+                <AddTask addTask = {addTask}/>
                 <ListOfTasks listOfTasks = {tasks} deleteTask = {deleteTask} completeTask = {completeTask}/>
                 <DetailOfTask />
               </div>
