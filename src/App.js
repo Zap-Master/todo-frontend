@@ -19,12 +19,16 @@ function App() {
       .catch(error => console.log(error))
   }, [])
 
-  const deleteTask = (taskId) =>{
+  const deleteTask = (taskId) => {
     axios.delete(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/deleteTask/${taskId}`)
       .then(() => axios.get(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/${userId}`)
                     .then((response) => setTasks(response.data))
       .catch((error) =>console.log(error))
-)
+      )
+  }
+
+  const completeTask = (taskId) => {
+    
   }
   return (
     <div className="App">
@@ -33,7 +37,7 @@ function App() {
           <Col xs={12} md={3}>
               <div className='componemt-container'>
                 <AddTask />
-                <ListOfTasks listOfTasks = {tasks} deleteTask = {deleteTask}/>
+                <ListOfTasks listOfTasks = {tasks} deleteTask = {deleteTask} completeTask = {completeTask}/>
                 <DetailOfTask />
               </div>
               
