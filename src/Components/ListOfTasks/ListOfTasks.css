@@ -2,4 +2,7 @@
     align-items: center;
     width: 100%;
   }
-  
+
+.task-complete {
+  text-decoration: line-through;
+}
