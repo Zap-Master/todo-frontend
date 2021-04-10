@@ -8,6 +8,11 @@ function ListOfTasks({listOfTasks}) {
                 {listOfTasks.map((task) =>(
                     <li key = {task.taskId}>
                         {task.taskName}
+                        <button>Delete</button>
+                        {(task.complete===1)
+                            ? <button>Complete</button>
+                            : <button>Uncomplete</button>
+                        }
                     </li>)
                     )}
             </ul>
