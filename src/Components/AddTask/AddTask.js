@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import {useRef} from 'react';
 import './AddTask.css';
 
 
@@ -7,11 +8,17 @@ function AddTask({addTask}) {
   const [dueDate, setDueDate] = useState('');
   const [description,  setDescription] = useState('');
 
+  const inputTaskName = useRef(null);
+
   const handleClick = () => {
-    addTask(taskName, dueDate, description);
-    setTaskName('');
-    setDueDate('');
-    setDescription('');
+    if (taskName === ''){
+      inputTaskName.current.focus();        
+    } else {
+        addTask(taskName, dueDate, description);
+        setTaskName('');
+        setDueDate('');
+        setDescription('');
+    }
   }
 
   return (
@@ -21,6 +28,7 @@ function AddTask({addTask}) {
           <label >Task:</label>
           <input 
             type='text'
+            ref = {inputTaskName}
             value = {taskName}
             onChange = {(e) => setTaskName(e.target.value)} />
         </div>
