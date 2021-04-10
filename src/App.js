@@ -10,15 +10,22 @@ import DetailOfTask from './Components/DetailOfTask/DetailOfTask';
 import './App.css';
 
 function App() {
+  const userId = 1; // userId hard coded
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get('https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/1')
+    axios.get(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/${userId}`)
       .then(response => setTasks(response.data))
-      
       .catch(error => console.log(error))
   }, [])
-  console.log(tasks);
+
+  const deleteTask = (taskId) =>{
+    axios.delete(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/deleteTask/${taskId}`)
+      .then(() => axios.get(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/${userId}`)
+                    .then((response) => setTasks(response.data))
+      .catch((error) =>console.log(error))
+)
+  }
   return (
     <div className="App">
       <Container className='app-container'>
@@ -26,7 +33,7 @@ function App() {
           <Col xs={12} md={3}>
               <div className='componemt-container'>
                 <AddTask />
-                <ListOfTasks listOfTasks = {tasks}/>
+                <ListOfTasks listOfTasks = {tasks} deleteTask = {deleteTask}/>
                 <DetailOfTask />
               </div>
               
