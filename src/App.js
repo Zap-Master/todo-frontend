@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import AddTask from './Components/AddTask/AddTask';
 import ListOfTasks from './Components/ListOfTasks/ListOfTasks';
-import DetailOfTask from './Components/DetailOfTask/DetailOfTask';
+
 import './App.css';
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
       complete: 0,
       description: description
     }
+    alert(dueDate);
     axios.post(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/createTask`, newTask)
       .then(() => axios.get(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/${userId}`)
                     .then((response) => setTasks(response.data))
@@ -55,7 +56,7 @@ function App() {
               <div className='componemt-container'>
                 <AddTask addTask = {addTask}/>
                 <ListOfTasks listOfTasks = {tasks} deleteTask = {deleteTask} completeTask = {completeTask}/>
-                <DetailOfTask />
+
               </div>
               
           </Col>
