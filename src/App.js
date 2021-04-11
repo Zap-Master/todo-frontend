@@ -28,12 +28,12 @@ function App() {
       complete: 0,
       description: description
     }
-    alert(dueDate);
     axios.post(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/createTask`, newTask)
       .then(() => axios.get(`https://kmvoiplith.execute-api.eu-west-2.amazonaws.com/dev/tasks/${userId}`)
                     .then((response) => setTasks(response.data))
       .catch((error) =>console.log(error))
       )
+    
   }
 
   const deleteTask = (taskId) => {
