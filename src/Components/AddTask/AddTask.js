@@ -5,7 +5,7 @@ import './AddTask.css';
 
 function AddTask({addTask}) {
   const [taskName, setTaskName] = useState('');
-  const [dueDate, setDueDate] = useState('');
+  const [dueDate, setDueDate] = useState(new Date().toISOString().slice(0, 10));
   const [description,  setDescription] = useState('');
 
   const inputTaskName = useRef(null);
