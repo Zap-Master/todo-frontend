@@ -1,4 +1,4 @@
-To Do Application - Frontend
+# To Do Application - Frontend
 
 This is the front end of To Do Application. It integrates with a backend, available [here](https://github.com/Zap-Master/todo_backend_api)
 
