@@ -1,8 +1,26 @@
 .list-of-tasks {
+    display: flex;
     align-items: center;
     width: 100%;
   }
+.task-row {
+  display: flex;
+  margin: 10px;
+  align-items: baseline;
+  
+}
+
+.buttons {
+  display: inline-block;
+  margin: 10px;
+  text-align: right;
+}
 
 .task-complete {
   text-decoration: line-through;
+}
+
+.task-name {
+  width: 60%;
+  text-align: left;
 }

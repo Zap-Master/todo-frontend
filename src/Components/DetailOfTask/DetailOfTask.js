@@ -32,28 +32,30 @@ function DetailOfTask({task, editTask}) {
 
     return (
         <div className='detail-of-task'>
-            <label>
-                Task:
-                <input 
-                    type ='text'
-                    ref = {inputTaskName}
-                    defaultValue = {task.taskName}
-                    onChange = {(e) => setTaskName(e.target.value)}/>
-            </label>
-            <label>
-                Due Date:
-                <input 
-                    type='date'
-                    defaultValue = {task.dueDate}
-                    onChange = {(e) => setDueDate(e.target.value)} />
-            </label>
-            <label>
-                Description:
-                <input
-                    type='textarea'
-                    defaultValue = {task.description}
-                    onChange = {(e) => setDescription(e.target.value)} />
-            </label>
+            <div className='first-line'>
+                <div className = 'task-name'>
+                    <label>Task:</label>
+                    <input 
+                        type ='text'
+                        ref = {inputTaskName}
+                        defaultValue = {task.taskName}
+                        onChange = {(e) => setTaskName(e.target.value)}/>
+
+                </div>
+                <div className = 'task-description'>
+                    <label>Due Date:</label>
+                    <input 
+                        type='date'
+                        defaultValue = {task.dueDate}
+                        onChange = {(e) => setDueDate(e.target.value)} />
+                </div>
+            </div>
+            <label>Description:</label>
+            <input
+                type='textarea'
+                defaultValue = {task.description}
+                onChange = {(e) => setDescription(e.target.value)} />
+            
             <button onClick = {handleClickSave}>Save</button>
             <button >Cancel</button>
         </div>

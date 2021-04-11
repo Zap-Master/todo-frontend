@@ -43,8 +43,8 @@ function ListOfTasks({listOfTasks, deleteTask, completeTask}) {
                 {listOfTasks.map((task) =>(
                     <li key = {task.taskId} className={`task ${(task.complete===1) ? 'task-complete' : ''}`}>
                             <div className = 'task-row'>
-                                <p>{task.taskName}</p>
-                                <div>
+                                <p className='task-name'>{task.taskName}</p>
+                                <div className = 'buttons'>
                                     <button onClick = {() => deleteTask(task.taskId)}>Delete</button>
                                     {(task.complete===1)
                                         ? <button onClick = {() => completeTask(task.taskId)}>Uncomplete</button>
